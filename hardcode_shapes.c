@@ -19,6 +19,7 @@
 
 #define SQ_SIDE 4
 #define FIG_SPACE 4
+#define N_ROTATIONS 4	
 
 #define	EMPY '.'
 #define	FULL '#'
@@ -92,32 +93,135 @@ void	rotate_shape(int *shape, int direction)
 	reflect_shape(shape, 2);
 }
 
+void	print_shape_debug(int *shape)
+{
+	int	i;
+	int	*new;
+
+	i = 0;
+	while (i++ < N_ROTATIONS)
+	{
+		ft_putstr("\n");
+		print_figure(shape);
+		ft_bsort_int(shape, FIG_SPACE, 1);
+		new = ft_array_subtract(shape, FIG_SPACE, \
+				ft_minval_int(shape, FIG_SPACE), 0);
+		ft_print_array(new, FIG_SPACE);
+		free(new);
+		ft_putchar('\n');
+		rotate_shape(shape, 0);
+	}
+}
+
+/*
+**	Print nonzero elements separated by commas, enclosed with curly brackets
+*/
+void	print_macro_shape(int *shape)
+{
+	int	i;
+
+	i = 0;
+	ft_putchar('{');
+	while (i < FIG_SPACE)
+	{
+		if (shape[i])
+		{
+			ft_putnbr(shape[i]);
+			ft_putstr(FIG_SPACE - i == 1 ? "}" : ", ");
+		}
+		i++;
+	}
+}
+
+/* Some shapes are rotation invariant. We need a single instance of each*/
+int		is_duplicate(int *shape, t_list *unique_shapes)
+{
+	while (unique_shapes)
+	{
+		if (ft_memcmp(shape, unique_shapes->content, FIG_SPACE) == 0)
+			return (1);
+		unique_shapes = unique_shapes->next;
+	}
+	return (0);
+}
+
+/* 
+**  Rotate each shepe 4 times. Drop duplicates.
+**  Return a list with unique shapes 
+*/
+t_list	*get_unique_shapes(int shapes[N_SHAPES][FIG_SPACE])
+{
+	int		i;
+	int		j;
+	int		*offsets;
+	t_list	*res;
+	t_list	*new;
+	int		total;
+
+	total = 0;
+	res = 0;
+	i = 0;
+	while (i < N_SHAPES)
+	{
+		j = 0;
+		while (j++ < N_ROTATIONS)
+		{
+			ft_bsort_int(shapes[i], FIG_SPACE, 1);
+			offsets = ft_array_subtract(shapes[i], FIG_SPACE, \
+					ft_minval_int(shapes[i], FIG_SPACE), 0);
+			new = ft_lstnew(offsets, FIG_SPACE);
+			if (!is_duplicate(shapes[i], res))
+			{
+				total++;
+				ft_lstadd(&res, new);
+			}
+			rotate_shape(shapes[i], 0);
+		}
+		i++;
+	}
+	ft_putstr("Total: ");
+	ft_putnbr(total);
+	ft_putchar('\n');
+	return (res);
+}
+
+void	print_unique_shapes(t_list *unique_shapes)
+{
+	ft_putstr("{");
+	while (unique_shapes->next)
+	{
+		print_macro_shape(unique_shapes->content);
+		ft_putstr(", ");
+		unique_shapes = unique_shapes->next;
+	}
+	print_macro_shape(unique_shapes->content);
+	ft_putstr("}");
+}
+
+void	print_macro_array(int shapes[N_SHAPES][FIG_SPACE])
+{
+	t_list	*unique_shapes;
+
+	unique_shapes = get_unique_shapes(shapes);
+	print_unique_shapes(unique_shapes);
+	ft_lstdel(&unique_shapes, &del_simple);
+}
+
 int	main()
 {
 	int	shapes[N_SHAPES][FIG_SPACE] = ALL_SHAPES;
+	#ifdef DEBUG
 	int	i;
 
 	i = 0;
 	while (i < N_SHAPES)
 	{
 		ft_putnbr(i);
-		ft_putstr(":\n");
-		print_figure(shapes[i]);
-		ft_putchar('\n');
-		rotate_shape(shapes[i], 0);
-
-		print_figure(shapes[i]);
-		ft_putchar('\n');
-		rotate_shape(shapes[i], 0);
-
-		print_figure(shapes[i]);
-		ft_putchar('\n');
-		rotate_shape(shapes[i], 0);
-
-		print_figure(shapes[i]);
-		ft_putchar('\n');
-
+		print_shape_debug(shapes[i]);
 		i++;
 	}
+	#endif
+	print_macro_array(shapes);
+	ft_putchar('\n');
 	return (0);
 }

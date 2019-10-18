@@ -97,4 +97,14 @@ t_list				*ft_lstappend(t_list *lst, void const *content,\
 		size_t content_size);
 void				del_simple(void *content, size_t content_size);
 
+void				ft_swap(void *a, void *b, size_t len);
+void				ft_swapint(int *a, int *b);
+int					ft_minval_int(int *a, unsigned int len);
+int					ft_maxval_int(int *a, unsigned int len);
+int					*ft_min_int(int *arr, int len);
+int					*ft_max_int(int *arr, int len);
+void				ft_bsort_int(int *a, unsigned int len, int ascending);
+void				ft_print_array(int *a, int len);
+int					*ft_array_subtract(int *arr, unsigned int len, int number,\
+		int in_place);
 #endif
