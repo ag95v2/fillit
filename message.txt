@@ -1,0 +1,4 @@
+Implemented idea with storing hard-coded shapes as 1-d offsets.
+It seems that different shapes can have same array of offsets.
+(I.e. shift right a big horisontal bar). 
+Need to rewrite all.
