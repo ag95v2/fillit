@@ -17,6 +17,8 @@
 # include <stdlib.h>
 # include <unistd.h>
 
+# include "bbtree_utils.h"
+
 int					ft_strcmp(const char *s1, const char *s2);
 size_t				ft_strlen(const char *s);
 void				*ft_memmove(void *dest, const void *src, size_t n);
@@ -96,6 +98,8 @@ void				*ft_memdup(void *c, size_t n);
 t_list				*ft_lstappend(t_list *lst, void const *content,\
 		size_t content_size);
 void				del_simple(void *content, size_t content_size);
+
+int					get_next_line(const int fd, char **line);
 
 void				ft_swap(void *a, void *b, size_t len);
 void				ft_swapint(int *a, int *b);

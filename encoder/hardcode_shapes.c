@@ -15,7 +15,6 @@
 #define ALL_SHAPES {T0, L0, L1, SQ, I0, Z0, Z1}
 #define N_SHAPES 7
 
-#include "libft.h"
 
 #define SQ_SIDE 4
 #define FIG_SPACE 4
@@ -23,6 +22,8 @@
 
 #define	EMPY '.'
 #define	FULL '#'
+
+#include "libft.h"
 
 int	isin(int number, int *array, int len)
 {
