@@ -30,7 +30,7 @@ NAME	libft/Makefile	/^NAME = libft.a$/;"	m
 N_ROTATIONS	encoder/hardcode_shapes.c	21;"	d	file:
 N_SHAPES	encoder/hardcode_shapes.c	16;"	d	file:
 N_SHAPES	inc/shapes.h	6;"	d
-PROJECT_PATH	tests/parser/multiple_input/Makefile	/^PROJECT_PATH = "..\/..\/"$/;"	m
+PROJECT_PATH	tests/parser/multiple_input/Makefile	/^PROJECT_PATH = "..\/..\/..\/"$/;"	m
 SHAPES	inc/shapes.h	5;"	d
 SHAPES_H	inc/shapes.h	3;"	d
 SQ	encoder/hardcode_shapes.c	10;"	d	file:
@@ -46,7 +46,9 @@ add_points	parser/parser.c	/^int	add_points(int current_shape[2 * FIG_SPACE], in
 add_to_end	libft/ft_lstmap.c	/^static t_list	*add_to_end(t_list *l, t_list *new)$/;"	f	file:
 avoid_leaks	libft/ft_strsplit.c	/^static void				avoid_leaks(char **res, int nlinks)$/;"	f	file:
 calculate_offsets	parser/parser.c	/^void	calculate_offsets(int shape[2 * FIG_SPACE])$/;"	f
+can_insert	solver/solver.c	/^int		can_insert($/;"	f
 change_coord	encoder/hardcode_shapes.c	/^int		*change_coord(int *shape)$/;"	f
+check_size	solver/solver.c	/^int	check_size($/;"	f
 concat_and_free	libft/get_next_line.c	/^static char				*concat_and_free(t_list **l, unsigned int total_len)$/;"	f	file:
 content	libft/includes/libft.h	/^	void			*content;$/;"	m	struct:s_list
 content_size	libft/includes/libft.h	/^	size_t			content_size;$/;"	m	struct:s_list
@@ -132,6 +134,8 @@ get_all_unique	encoder/hardcode_shapes.c	/^t_list	*get_all_unique(int shapes[N_S
 get_n_words	libft/ft_strsplit.c	/^static int				get_n_words(char const *s, char c)$/;"	f	file:
 get_next_line	libft/get_next_line.c	/^int						get_next_line(const int fd, char **line)$/;"	f
 good_format	parser/parser.c	/^int	good_format(char *line)$/;"	f
+init_field	solver/solver.c	/^void	init_field(char field[MAX_FIELD][MAX_FIELD])$/;"	f
+insert	solver/solver.c	/^int		insert($/;"	f
 io_err	libft/includes/get_next_line.h	/^	int			io_err;$/;"	m	struct:s_unread_buff
 is_unique	encoder/hardcode_shapes.c	/^int		is_unique(int *shape_2d, t_list *seen)$/;"	f
 isin	encoder/hardcode_shapes.c	/^int	isin(int number, int *array, int len)$/;"	f
@@ -139,6 +143,7 @@ len_of_next	libft/ft_strsplit.c	/^static size_t			len_of_next(const char *src, c
 main	encoder/hardcode_shapes.c	/^int	main()$/;"	f
 main	libft/tests/sort_int/sort_array.c	/^int	main()$/;"	f
 main	libft/tests/swap_speed/test_swap_speed.c	/^int	main()$/;"	f
+main	main.c	/^int	main(int argc, char **argv)$/;"	f
 main	tests/array_print/main.c	/^int main()$/;"	f
 main	tests/parser/multiple_input/main.c	/^int	main(int argc, char **argv)$/;"	f
 my_abs	libft/ft_itoa.c	/^static int			my_abs(int n)$/;"	f	file:
@@ -157,6 +162,8 @@ pos	libft/includes/get_next_line.h	/^	int			pos;$/;"	m	struct:s_unread_buff
 print_2d_shape	encoder/hardcode_shapes.c	/^void	print_2d_shape(int *xy_offsets)$/;"	f
 print_all_shapes	encoder/hardcode_shapes.c	/^void	print_all_shapes(t_list *all_shapes)$/;"	f
 print_array	libft/tests/sort_int/sort_array.c	/^void	print_array(int *a, int len)$/;"	f
+print_array	tests/parser/multiple_input/main.c	/^void	print_array(int *arr, int len)$/;"	f
+print_field	solver/solver.c	/^void	print_field(char field[MAX_FIELD][MAX_FIELD], int sq_side)$/;"	f
 print_figure	encoder/hardcode_shapes.c	/^void	print_figure(int *start)$/;"	f
 print_nice_format	encoder/hardcode_shapes.c	/^void	print_nice_format(int shapes[N_SHAPES][FIG_SPACE])$/;"	f
 print_shape	tests/array_print/main.c	/^void	print_shape(int *shape)$/;"	f
@@ -169,7 +176,9 @@ s_bbtree_node	libft/includes/bbtree_utils.h	/^typedef	struct			s_bbtree_node$/;"
 s_list	libft/includes/libft.h	/^typedef struct		s_list$/;"	s
 s_unread_buff	libft/includes/get_next_line.h	/^typedef struct	s_unread_buff$/;"	s
 seek_nl	libft/get_next_line.c	/^static int				seek_nl(t_unread_buff *buff, int fd, t_list **l)$/;"	f	file:
+solver	solver/solver.c	/^int	solver(int *input[MAX_INPUT], int n_tetr)$/;"	f
 start_of_next	libft/ft_strsplit.c	/^static const char		*start_of_next(const char *s, char sep)$/;"	f	file:
+start_sq_side	solver/solver.c	/^int		start_sq_side(int n_tetr)$/;"	f
 str_rev	libft/ft_itoa.c	/^static void			str_rev(char *s)$/;"	f	file:
 str_rev	libft/ft_putnbr.c	/^static void			str_rev(char *s)$/;"	f	file:
 str_rev	libft/ft_putnbr_fd.c	/^static void			str_rev(char *s)$/;"	f	file:

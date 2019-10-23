@@ -117,7 +117,7 @@ int	*parse_tetr(int fd,\
 
 /*
 **  Tetraminos should be separated by exactly one empty line.
-**  All input shapes are stored in 
+**	Return number of tetraminos read or -1 in case of errors.
 */
 
 int	parse_all(	
